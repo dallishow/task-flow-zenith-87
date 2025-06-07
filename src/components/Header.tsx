@@ -13,46 +13,48 @@ const Header: React.FC<HeaderProps> = ({ stats }) => {
   const completionPercentage = stats.total > 0 ? (stats.completed / stats.total) * 100 : 0;
 
   return (
-    <div className="text-center mb-8">
-      <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">
-        Lista de Tarefas
-      </h1>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">
-        Organize sua vida, uma tarefa de cada vez
-      </p>
+    <div className="text-center mb-6 px-4">
+      <div className="mb-6">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          📱 Minhas Tarefas
+        </h1>
+        <p className="text-base text-gray-600 dark:text-gray-300">
+          Organize sua vida com estilo
+        </p>
+      </div>
       
-      <div className="flex justify-center items-center space-x-8 text-sm">
-        <div className="text-center">
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
           <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
             {stats.total}
           </div>
-          <div className="text-gray-500 dark:text-gray-400">Total</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400">Total</div>
         </div>
         
-        <div className="text-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
           <div className="text-2xl font-bold text-green-600 dark:text-green-400">
             {stats.completed}
           </div>
-          <div className="text-gray-500 dark:text-gray-400">Concluídas</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400">Feitas</div>
         </div>
         
-        <div className="text-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
           <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
             {stats.pending}
           </div>
-          <div className="text-gray-500 dark:text-gray-400">Pendentes</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400">Pendentes</div>
         </div>
       </div>
 
       {stats.total > 0 && (
-        <div className="mt-4 max-w-md mx-auto">
-          <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
-            <span>Progresso</span>
-            <span>{Math.round(completionPercentage)}%</span>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <span>Progresso geral</span>
+            <span className="font-semibold">{Math.round(completionPercentage)}%</span>
           </div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
             <div
-              className="bg-gradient-to-r from-blue-500 to-green-500 h-2 rounded-full transition-all duration-500 ease-out"
+              className="bg-gradient-to-r from-blue-500 to-green-500 h-3 rounded-full transition-all duration-700 ease-out shadow-sm"
               style={{ width: `${completionPercentage}%` }}
             />
           </div>

@@ -98,32 +98,36 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Header stats={stats} />
-        
-        <div className="space-y-6">
-          <AddTask onAddTask={addTask} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="min-h-screen">
+        <div className="pt-safe-top pb-safe-bottom">
+          <Header stats={stats} />
           
-          <FilterBar
-            currentFilter={filter}
-            onFilterChange={setFilter}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            onClearCompleted={clearCompleted}
-            hasCompletedTasks={stats.completed > 0}
-          />
-
-          {filteredTasks.length === 0 ? (
-            <EmptyState filter={filter} hasSearchQuery={!!searchQuery.trim()} />
-          ) : (
-            <TaskList
-              tasks={filteredTasks}
-              onToggleTask={toggleTask}
-              onDeleteTask={deleteTask}
-              onEditTask={editTask}
+          <div className="space-y-0">
+            <AddTask onAddTask={addTask} />
+            
+            <FilterBar
+              currentFilter={filter}
+              onFilterChange={setFilter}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              onClearCompleted={clearCompleted}
+              hasCompletedTasks={stats.completed > 0}
             />
-          )}
+
+            {filteredTasks.length === 0 ? (
+              <EmptyState filter={filter} hasSearchQuery={!!searchQuery.trim()} />
+            ) : (
+              <div className="pb-6">
+                <TaskList
+                  tasks={filteredTasks}
+                  onToggleTask={toggleTask}
+                  onDeleteTask={deleteTask}
+                  onEditTask={editTask}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
